@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Reports</title>
+</head>
+<body>
+
+<h2>System Reports</h2>
+
+<ul>
+    <li>Total Bookings: <b th:text="${total}"></b></li>
+    <li>Approved Bookings: <b th:text="${approved}"></b></li>
+    <li>Pending Bookings: <b th:text="${pending}"></b></li>
+    <li>Rejected Bookings: <b th:text="${rejected}"></b></li>
+</ul>
+
+<br>
+<a href="/admin-home">Back to Dashboard</a>
+
+</body>
+</html>

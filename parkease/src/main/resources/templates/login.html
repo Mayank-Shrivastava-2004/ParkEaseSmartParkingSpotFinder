@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ParkEase Login</title>
+</head>
+<body>
+
+<h2>ParkEase Login</h2>
+
+<form action="/login-page" method="post">
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>Password:</label><br>
+    <input type="password" name="password" required><br><br>
+
+    <label>Role:</label><br>
+    <select name="role" required>
+        <option value="">-- Select Role --</option>
+        <option value="ADMIN">Admin</option>
+        <option value="DRIVER">Driver</option>
+        <option value="PARKING_PROVIDER">Parking Provider</option>
+    </select>
+    <br><br>
+
+    <button type="submit">Login</button>
+</form>
+
+<br>
+<a href="/register">New user? Register here</a>
+
+</body>
+</html>
