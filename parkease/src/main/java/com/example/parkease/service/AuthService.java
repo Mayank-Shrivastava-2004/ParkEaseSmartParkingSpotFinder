@@ -6,7 +6,8 @@ import com.example.parkease.model.User;
 import com.example.parkease.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class AuthService {
@@ -17,38 +18,41 @@ public class AuthService {
         this.userRepository = userRepository;
     }
 
-    public String register(RegisterRequest request) {
+    public Map<String, Object> register(RegisterRequest request) {
+
+        Map<String, Object> response = new HashMap<>();
 
         if (userRepository.findByEmail(request.email).isPresent()) {
-            return "User already exists";
+            response.put("message", "User already exists");
+            return response;
         }
 
         User user = new User();
         user.setName(request.name);
         user.setEmail(request.email);
-        user.setPassword(request.password); // plain text (temporary)
+        user.setPassword(request.password);
         user.setRole(request.role);
 
         userRepository.save(user);
 
-        return "Registration successful";
+        response.put("message", "Registration successful");
+        return response;
     }
 
-    public String login(LoginRequest request) {
+    public Map<String, Object> login(LoginRequest request) {
 
-        Optional<User> userOpt = userRepository.findByEmail(request.email);
+        Map<String, Object> response = new HashMap<>();
 
-        if (userOpt.isEmpty()) {
-            return "User not found";
-        }
-
-        User user = userOpt.get();
-
-        if (!user.getPassword().equals(request.password)) {
-            return "Invalid password";
-        }
-
-        return "Login successful as " + user.getRole();
+        return userRepository.findByEmail(request.email)
+                .filter(u -> u.getPassword().equals(request.password))
+                .map(u -> {
+                    response.put("message", "Login successful");
+                    response.put("role", u.getRole());
+                    return response;
+                })
+                .orElseGet(() -> {
+                    response.put("message", "Invalid credentials");
+                    return response;
+                });
     }
 }
-

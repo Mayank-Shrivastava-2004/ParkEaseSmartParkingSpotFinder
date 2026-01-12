@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ParkingSlotRepository extends MongoRepository<ParkingSlot, String> {
 
-    List<ParkingSlot> findByAvailableTrue();
+    List<ParkingSlot> findByProviderEmail(String providerEmail);
 }

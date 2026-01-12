@@ -1,37 +1,39 @@
 package com.example.parkease.controller;
 
-import com.example.parkease.model.ParkingSlot;
-import com.example.parkease.repository.ParkingSlotRepository;
-import org.springframework.stereotype.Controller;
+import com.example.parkease.repository.BookingRepository;
+import com.example.parkease.service.BookingService;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api/provider")
 public class ProviderController {
 
-    private final ParkingSlotRepository parkingSlotRepository;
+    private final BookingRepository bookingRepository;
+    private final BookingService bookingService;
 
-    public ProviderController(ParkingSlotRepository parkingSlotRepository) {
-        this.parkingSlotRepository = parkingSlotRepository;
+    public ProviderController(BookingRepository bookingRepository,
+                              BookingService bookingService) {
+        this.bookingRepository = bookingRepository;
+        this.bookingService = bookingService;
     }
 
-    @GetMapping("/add-slot")
-    public String addSlotPage() {
-        return "add-slot";
+    @GetMapping("/bookings")
+    public List<?> providerBookings(@RequestParam String providerEmail) {
+        return bookingRepository.findByProviderEmail(providerEmail);
     }
 
-    @PostMapping("/add-slot")
-    public String addSlot(@RequestParam String providerEmail,
-                          @RequestParam String location,
-                          @RequestParam String slotNumber) {
+    @PutMapping("/approve")
+    public Map<String, String> approve(@RequestParam String bookingId) {
+        bookingService.updateStatus(bookingId, "APPROVED");
+        return Map.of("message", "Booking approved");
+    }
 
-        ParkingSlot slot = new ParkingSlot();
-        slot.setProviderEmail(providerEmail);
-        slot.setLocation(location);
-        slot.setSlotNumber(slotNumber);
-        slot.setAvailable(true);
-
-        parkingSlotRepository.save(slot);
-
-        return "redirect:/provider-home";
+    @PutMapping("/reject")
+    public Map<String, String> reject(@RequestParam String bookingId) {
+        bookingService.updateStatus(bookingId, "REJECTED");
+        return Map.of("message", "Booking rejected");
     }
 }

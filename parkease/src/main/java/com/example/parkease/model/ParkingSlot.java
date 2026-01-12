@@ -14,39 +14,17 @@ public class ParkingSlot {
     private String slotNumber;
     private boolean available;
 
-    public String getId() {
-        return id;
-    }
+    public String getId() { return id; }
 
-    public String getProviderEmail() {
-        return providerEmail;
-    }
+    public String getProviderEmail() { return providerEmail; }
+    public void setProviderEmail(String providerEmail) { this.providerEmail = providerEmail; }
 
-    public void setProviderEmail(String providerEmail) {
-        this.providerEmail = providerEmail;
-    }
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
 
-    public String getLocation() {
-        return location;
-    }
+    public String getSlotNumber() { return slotNumber; }
+    public void setSlotNumber(String slotNumber) { this.slotNumber = slotNumber; }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getSlotNumber() {
-        return slotNumber;
-    }
-
-    public void setSlotNumber(String slotNumber) {
-        this.slotNumber = slotNumber;
-    }
-
-    public boolean isAvailable() {
-        return available;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
+    public boolean isAvailable() { return available; }
+    public void setAvailable(boolean available) { this.available = available; }
 }
