@@ -48,7 +48,7 @@ ParkEase/
 │   ├── package.json         # Frontend dependencies
 │   └── README.md            # Frontend documentation
 │
-├── backend/                  # Node.js/Express API
+├── backend-nodejs/           # Node.js/Express API (Recommended)
 │   ├── models/              # Database models
 │   │   ├── User.js
 │   │   ├── ParkingLot.js
@@ -67,7 +67,11 @@ ParkEase/
 │   ├── .env                # Environment variables
 │   └── README.md           # Backend documentation
 │
+├── backend/                 # Java Spring Boot backend (Alternative)
+│   └── (Spring Boot structure)
+│
 ├── ARCHITECTURE.md          # System architecture
+├── BACKEND_OPTIONS.md       # Backend comparison guide
 ├── INTEGRATION_GUIDE.md     # Integration instructions
 ├── INTEGRATION_SUMMARY.md   # Feature summary
 ├── QUICK_START.md          # Quick setup guide
@@ -122,14 +126,14 @@ cd ..
 ### 3. Install Backend Dependencies
 
 ```bash
-cd backend
+cd backend-nodejs
 npm install
 cd ..
 ```
 
 ### 4. Configure Environment Variables
 
-The `.env` file in the `backend` directory is already configured. Update if needed:
+The `.env` file in the `backend-nodejs` directory is already configured. Update if needed:
 
 ```env
 PORT=5000
@@ -161,7 +165,7 @@ mongod
 
 **Terminal 2 - Backend:**
 ```bash
-cd backend
+cd backend-nodejs
 npm run dev
 ```
 
@@ -247,11 +251,12 @@ See `INTEGRATION_GUIDE.md` for:
 ## 📖 Documentation
 
 - **QUICK_START.md** - Quick setup guide
+- **BACKEND_OPTIONS.md** - Backend comparison (Node.js vs Java)
 - **INTEGRATION_GUIDE.md** - Frontend-backend integration
 - **ARCHITECTURE.md** - System architecture diagrams
 - **INTEGRATION_SUMMARY.md** - Complete feature summary
 - **frontend/README.md** - Frontend documentation
-- **backend/README.md** - Backend API documentation
+- **backend-nodejs/README.md** - Node.js API documentation
 
 ## 🔐 Security Features
 
