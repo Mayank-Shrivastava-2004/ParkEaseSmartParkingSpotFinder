@@ -30,7 +30,7 @@ mongod --version
 ```bash
 # Clone the repository
 git clone https://github.com/Mayank-Shrivastava-2004/ParkEaseSmartParkingSpotFinder.git
-cd ParkEaseSmartParkingSpotFinder-main
+cd ParkEaseSmartParkingSpotFinder
 
 # Install frontend dependencies
 npm install

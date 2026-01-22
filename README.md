@@ -111,7 +111,7 @@ ParkEase/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/SubbaLaskhmi/Infosys-ParkEase-Smart-Parking-Spot-Finder.git
+git clone https://github.com/Mayank-Shrivastava-2004/ParkEaseSmartParkingSpotFinder.git
 cd Infosys-ParkEase-Smart-Parking-Spot-Finder
 ```
 
